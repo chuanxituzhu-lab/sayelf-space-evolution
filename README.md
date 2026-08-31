@@ -4,6 +4,44 @@
 
 一个本地优先的「手绘稿 → 线 → 线稿 → 草图 → 线落成墙 → 空间生成 → 视频分镜」工作台。
 
+## 产品定位
+
+**标题：** 从一条线开始，让空间沿着设计意图自然生成。
+**Slogan：** 变的是完成度，不变的是空间。
+**内容概要：** Sayelf Space Evolution 将一张手绘稿、空间描述、空间类型与视觉风格，组织成 5 个连续的空间阶段和 1 个视频分镜 Prompt。它保留机位、透视、墙柱、门窗、楼梯与空间锚点，让空间从线条逐步走向可体验的真实场景。
+
+## 对客户的价值
+
+- **守住设计意图：** 用 Spatial Continuity Lock 约束连续生成，减少每一步重新设计导致的空间漂移。
+- **更快完成提案：** 一次得到 5 份独立空间 Prompt 和 1 份视频 Prompt，便于快速试用、比较和交付。
+- **匹配不同项目气质：** 空间类型与视觉风格可以自由组合，材质与完成度不固定为清水混凝土，可根据场景和建筑空间呈现豪华、极简、自然、商业等方向。
+- **本地可控、易于协作：** 不依赖账号和付费 API，项目可保存、导出，并把 Prompt 交给客户已有的 AI 图像/视频平台继续互动。
+
+> **材质匹配原则：** 除非客户明确指定，系统不会把清水混凝土当作默认答案；材质、光线和完成度会服从空间类型、建筑结构、视觉风格与空间描述。
+
+## 一眼看懂：从线到空间
+
+下面是一个民宿场景的 15 秒演化示例。5 张图对应 01—05 空间阶段，结构连续，完成度逐步增加：
+
+<table>
+  <tr>
+    <td align="center"><strong>01 线</strong><br><img src="docs/assets/workflow/01-line.png" alt="01 线的出现" width="180"></td>
+    <td align="center"><strong>02 线稿</strong><br><img src="docs/assets/workflow/02-linework.png" alt="02 线稿叠加" width="180"></td>
+    <td align="center"><strong>03 草图</strong><br><img src="docs/assets/workflow/03-sketch.png" alt="03 草图形成" width="180"></td>
+    <td align="center"><strong>04 线落成墙</strong><br><img src="docs/assets/workflow/04-wall.png" alt="04 线落成墙" width="180"></td>
+    <td align="center"><strong>05 空间生成</strong><br><img src="docs/assets/workflow/05-space-generation.png" alt="05 材质与空间生成" width="180"></td>
+  </tr>
+  <tr>
+    <td valign="top">从一笔开始，提取空间轮廓。</td>
+    <td valign="top">线条叠加，建立结构层次。</td>
+    <td valign="top">草图成形，明确空间关系。</td>
+    <td valign="top">已有线条获得建筑厚度。</td>
+    <td valign="top">按场景匹配材质、光线与生活尺度。</td>
+  </tr>
+</table>
+
+这套方法适用于住宅、民宿、现代商业、展厅、体育馆、办公空间、酒店大堂、文化中心等场景；工作流不变，变化的是空间类型、风格和最终完成度。
+
 ## 适合谁
 - 建筑/室内设计师
 - AI 视觉创作者
