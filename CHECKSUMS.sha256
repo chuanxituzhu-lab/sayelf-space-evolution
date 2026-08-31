@@ -1,14 +1,14 @@
-6f9bb95f526847146069f156d9448bc8eec7e61b5cb1bd03b39d7f790b139627  sayelf-space-evolution-v1.0/CHANGELOG.md
+9524c4ed0898dee1039d94ed8c228b6c655d1c0f35b1dda7d7b2ab4ed55813df  sayelf-space-evolution-v1.0/CHANGELOG.md
 120e019d2337920212dfe13224c26fd423e48f66d31d75ec8efc1698c8fedae8  sayelf-space-evolution-v1.0/COMMERCIAL_LICENSE.txt
-cd811e0c15d4bc394f246ecd5c8c78f83e491c8cd5bb312904c20c257bcde951  sayelf-space-evolution-v1.0/README.md
+dae141b5cc8cceae27d0751ab2fab4f1024c5f142db02553bdc729026712a474  sayelf-space-evolution-v1.0/README.md
 59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03  sayelf-space-evolution-v1.0/VERSION
-e01a1c15565d037d01ba7c6fea9366d85be2b73aabcdb18e6e4da8ccd7bd22a5  sayelf-space-evolution-v1.0/agent/AGENT.md
+0b7970c1d338e41fda4c02ff1ec481de524f275392aa84fbab64c94df4d296a8  sayelf-space-evolution-v1.0/agent/AGENT.md
 b927ac042d24e23fb4dc227e74b9f68a78127047174e92121ef16a15916117d6  sayelf-space-evolution-v1.0/app.py
 d6d3bcc2295db3943b6072ef126ba64c2b16a5f57c71b35f4949176cc79d0e0d  sayelf-space-evolution-v1.0/core/continuity-rules.yaml
 85cfd64beb6f39f3e72161eb8c6a60dc7548418b421f9da0d7f724bdc121851f  sayelf-space-evolution-v1.0/core/spatial-dna.schema.json
 69ce96188d20956ec812915965528298e6a613d9e793334c889e04e13a5c2ea4  sayelf-space-evolution-v1.0/docs/INSTALL.md
 4cf481890b76caa1aea329aef5615868623a30e7f5f36471e22f2d53a4b4fd6d  sayelf-space-evolution-v1.0/docs/QUICK_START.md
-fe6f033dc1eb1d506222438c568d55a31c375926714aa3c1792a9cc5014cfa38  sayelf-space-evolution-v1.0/docs/SALES_DELIVERY_README.md
+22b99200b2e491b8c8a4e5a308891e5fd3cc6084f7647158ba333ca8f0af8d4f  sayelf-space-evolution-v1.0/docs/SALES_DELIVERY_README.md
 e0fa701cc5a27112407858a825e4464dfd0f5d0517aabb4248fb61746bd225bc  sayelf-space-evolution-v1.0/examples/DEMO_WORKFLOW.md
 8d9ef9577120df2bde4fbbc9e6dd60d05109ff419abfb2cb570b23db3119afa5  sayelf-space-evolution-v1.0/examples/demo-project.json
 13fa00f30ce95d20fc49ea5cbf91f2ead2ef1a7b2a47141e43b89abe8af8ab7e  sayelf-space-evolution-v1.0/interfaces/README.md
@@ -23,5 +23,5 @@ d50a04eb9d6812d4c52be1e147d66049c9bb7b6f77b5c74d660f9f5345176a30  sayelf-space-e
 cc656200c876713b9005fa7eeb3e4ca0a0da501ac4f8a0718e4814ec40d8ac59  sayelf-space-evolution-v1.0/start_mac_linux.sh
 3ec021f935605ab71975df9d93b5744fb6d3179cefe33a2e66fe7c4920fd273c  sayelf-space-evolution-v1.0/start_windows.bat
 490aa732da0e95bbbe96e8ed0e0e31bb710ab28d4ff84abd6ad3cbba2ca09111  sayelf-space-evolution-v1.0/start_windows.ps1
-67175f05c1ef486ec2a6365212c1f28d62211475f191c536a9524373a8fb1810  sayelf-space-evolution-v1.0/tests/ACCEPTANCE.md
-d84d3425c2e665168d7ef2c9ccfc3cc725f4331a8e6106735e2bbeddcdcfb09bd  sayelf-space-evolution-v1.0/webui/index.html
+2d7aa03bd51f4c18091d8a874c517f82921ea5dd80c12186d5dfdb69bb3487e6  sayelf-space-evolution-v1.0/tests/ACCEPTANCE.md
+b68e93d0937894bbbab9dd31ae94aa3a09c92a678eb4e1e7b641c7128989357e  sayelf-space-evolution-v1.0/webui/index.html
