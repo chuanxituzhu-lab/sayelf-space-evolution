@@ -5,7 +5,7 @@ A build is accepted when:
 2. `/api/health` returns version 1.0.0.
 3. WebUI opens locally.
 4. A hand sketch can be selected and previewed.
-5. Four stage prompts are generated locally.
+5. Six stage prompts are generated locally: line, linework, sketch, wall, space generation and film.
 6. Five continuity locks are enabled by default.
 7. Project JSON can be exported.
 8. Workflow Markdown can be exported.

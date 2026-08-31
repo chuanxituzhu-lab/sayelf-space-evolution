@@ -3,7 +3,7 @@
 ## Purpose
 Turn a text idea, reference image, or hand sketch into a continuous spatial evolution sequence:
 
-`Sketch → Structure / Line Becomes Wall → Finished Space → Film Storyboard`
+`Line → Linework → Sketch → Line Becomes Wall → Space Generation → Film Storyboard`
 
 ## Prime Rule
 **Completion changes; space does not.**
@@ -17,25 +17,33 @@ The skill must preserve the same Spatial DNA across stages unless the user expli
 4. Door/window/opening position and proportion
 5. Major spatial anchors and foreground/midground/background relationship
 
-## Stage 01 — Sketch Cleanup
-- Preserve the original hand sketch intent.
-- Remove paper noise and meaningless guide lines.
-- Clarify spatial relationships without redesign.
-- Keep an architectural hand-drawn character.
+## Stage 01 — Line
+- Start from the first meaningful line and preserve its direction, weight and spatial intent.
+- Establish the initial outline of the imagined space without adding unrequested structure.
 
-## Stage 02 — Line Becomes Wall
+## Stage 02 — Linework
 - Inherit Stage 01 exactly.
+- Layer lines to clarify foreground, middle ground, background, openings, stairs and spatial anchors.
+- Keep an architectural line-drawing character; do not add final materials.
+
+## Stage 03 — Sketch
+- Inherit Stage 02 exactly.
+- Form a complete architectural sketch with clear massing, perspective, proportion and spatial relationships.
+- Remove paper noise and meaningless guide lines while keeping an exploratory hand-drawn character.
+
+## Stage 04 — Line Becomes Wall
+- Inherit Stage 03 exactly.
 - Convert existing key lines into architectural thickness and structure.
 - Do not move walls, resize openings, flip stairs, change room proportions, or change camera.
 - Keep materials neutral; emphasize structural emergence.
 
-## Stage 03 — Space Formation
-- Inherit Stage 02 geometry exactly.
+## Stage 05 — Space Generation
+- Inherit Stage 04 geometry exactly.
 - Add materials, natural light, furniture, plants, human scale and atmosphere only.
 - Avoid geometry drift, plastic textures, fake bokeh and excessive HDR.
 
-## Stage 04 — Film
-- Use Stage 03 as the preferred first/reference frame for I2V.
+## Stage 06 — Film
+- Use Stage 05 as the preferred first/reference frame for I2V.
 - Motion must not destroy geometry.
 - Preferred motion: slow push-in, restrained tilt-up, subtle parallax.
 - Forbidden: wall melting, opening drift, furniture teleportation, camera jump.

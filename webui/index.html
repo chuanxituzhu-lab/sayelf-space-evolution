@@ -14,7 +14,7 @@
     .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}.card h2{font-size:14px;margin:0 0 12px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     label{display:block;font-size:12px;color:var(--muted);margin:10px 0 6px} input,textarea,select{width:100%;background:#101319;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:10px;font:inherit} textarea{min-height:86px;resize:vertical}
     button{background:var(--accent);color:var(--ink);border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}.secondary{background:#242933;color:var(--text);border:1px solid var(--line)} .ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.stagebar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}.stage{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);cursor:pointer}.stage.active{outline:2px solid var(--accent)}.stage b{display:block}.stage small{color:var(--muted)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.stagebar{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:14px}.stage{padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);cursor:pointer}.stage.active{outline:2px solid var(--accent)}.stage b{display:block}.stage small{color:var(--muted)}
     .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}.preview{min-height:420px;display:flex;align-items:center;justify-content:center;border:1px dashed #3b4250;border-radius:12px;background:#11141a;overflow:hidden}.preview img{max-width:100%;max-height:520px;object-fit:contain}.placeholder{color:var(--muted);text-align:center;padding:30px}.prompt{white-space:pre-wrap;background:#0d1015;border:1px solid var(--line);border-radius:10px;padding:12px;min-height:180px;font-size:13px;line-height:1.6}.status{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.metric{background:#101319;border:1px solid var(--line);border-radius:10px;padding:10px}.metric strong{display:block;font-size:18px}.metric span{font-size:11px;color:var(--muted)}
     .drop{border:1px dashed #4b5362;border-radius:12px;padding:18px;text-align:center;color:var(--muted)}.drop input{margin-top:10px}.note{font-size:12px;color:var(--muted);line-height:1.6}.lock{color:var(--ok);font-weight:700}.warn{color:var(--warn)}
     footer{padding:18px;color:var(--muted);font-size:11px;text-align:center}
@@ -59,7 +59,7 @@
     <div class="grid">
       <div class="card">
         <h2>当前资产</h2>
-        <div class="preview" id="preview"><div class="placeholder">上传手绘稿后将在这里预览。<br/>点击上方阶段切换草图 / 线落成墙 / 空间 / 视频。</div></div>
+        <div class="preview" id="preview"><div class="placeholder">上传手绘稿后将在这里预览。<br/>点击上方阶段切换线 / 线稿 / 草图 / 线落成墙 / 空间生成 / 视频。</div></div>
         <div class="actions"><button class="secondary" id="copyBtn">复制当前提示词</button><button class="secondary" id="exportMdBtn">导出工作流 .md</button><button class="ghost" id="exportJsonBtn">导出项目 .json</button></div>
       </div>
       <div class="card">
@@ -76,17 +76,19 @@
 
     <div class="card">
       <h2>使用方式</h2>
-      <p class="note">① 上传手绘稿 → ② 填写空间描述 → ③ 生成工作流 → ④ 将对应阶段提示词连同上一阶段图片交给你使用的 AI 图像/视频工具 → ⑤ 每次只允许“完成度增加”，不要重新设计空间。视频阶段优先使用第三阶段成图作为首帧进行图生视频。</p>
+      <p class="note">① 上传手绘稿 → ② 填写空间描述 → ③ 生成工作流 → ④ 将对应阶段提示词连同上一阶段图片交给你使用的 AI 图像/视频工具 → ⑤ 每次只允许“完成度增加”，不要重新设计空间。视频阶段优先使用第五阶段成图作为首帧进行图生视频。</p>
     </div>
   </section>
 </main>
 <footer>© Sayelf Space Evolution v1.0 · 本地工作台 · 商业销售版</footer>
 <script>
 const stages=[
- {id:'sketch',name:'01 草图',sub:'Sketch'},
- {id:'wall',name:'02 线落成墙',sub:'Structure'},
- {id:'space',name:'03 空间成型',sub:'Space'},
- {id:'film',name:'04 视频',sub:'Film'}
+ {id:'line',name:'01 线',sub:'Line'},
+ {id:'lineart',name:'02 线稿',sub:'Linework'},
+ {id:'sketch',name:'03 草图',sub:'Sketch'},
+ {id:'wall',name:'04 线落成墙',sub:'Structure'},
+ {id:'space',name:'05 空间生成',sub:'Space Generation'},
+ {id:'film',name:'06 视频',sub:'Film'}
 ];
 let current='sketch', sketchData='', refData='', generated={};
 const $=id=>document.getElementById(id);
@@ -96,11 +98,13 @@ $('sketchFile').onchange=()=>readFile($('sketchFile'),d=>{sketchData=d;renderCur
 function locks(){return [...document.querySelectorAll('.lockbox')].filter(x=>x.checked).map(x=>x.dataset.k)}
 function lockText(){const m={camera:'同一机位、相机高度、朝向与焦距',perspective:'同一地平线、透视关系与消失点',geometry:'同一墙、柱、梁、楼板、楼梯及层高关系',openings:'同一门窗尺寸、位置与开口比例',anchors:'同一核心家具与前中后景锚点'};return locks().map(k=>'• '+m[k]).join('\n')}
 function base(){return `项目：${$('projectName').value.trim()}\n空间描述：${$('description').value.trim()||'依据上传手绘稿识别空间构想，不新增未经要求的空间结构。'}\n画幅：${$('ratio').value}\n视觉方向：${$('style').value}\n\n【Spatial Continuity Lock】\n${lockText()}\n\n最高规则：变的是完成度，不变的是空间。所有后续阶段只能继承、澄清、加厚、材质化和增加生活感，不得重新设计空间。`}
-function generate(){const b=base(); generated={
- sketch:`${b}\n\n【阶段 01｜草图整理】\n基于手绘稿保留原始构图、透视、比例与空间关系。清理纸面噪声与无意义辅助线，但保留探索性的手绘笔触。明确主要墙线、开口、楼梯、台面和空间锚点。不要加入最终材质，不要改变原设计。建筑设计手绘感，清晰而不过度精修。`,
- wall:`${b}\n\n【阶段 02｜线落成墙】\n严格继承阶段 01。保持完全相同的机位、透视、空间比例、主要开口和构图。将已有关键线条转化为具有厚度和结构逻辑的墙、柱、梁、楼板、窗框、楼梯和固定构件。辅助线逐渐淡出，主体结构逐渐清晰。不要移动墙体，不要改变窗户，不要改变楼梯方向，不要重新布局。整体呈建筑灰模/白模状态，材质克制。核心视觉动作：线条获得厚度并“落成墙”。`,
- space:`${b}\n\n【阶段 03｜空间成型】\n严格继承阶段 02 的全部几何。禁止移动墙、柱、门窗、楼梯及相机。仅增加真实材质、自然光、细节、家具、植物和生活尺度。材质与光影服从已有建筑结构，不能用装饰掩盖空间逻辑。空间从灰模自然生长为可居住、可体验的真实场景；真实尺度、自然光、克制高级、避免塑料质感与过度 HDR。`,
- film:`${b}\n\n【阶段 04｜${$('duration').value} 视频分镜】\n0–3s：保留同一机位，手绘线条从纸面/画面中逐渐被整理，空间构图显现。\n3–6s：关键线条加深并获得厚度，墙、柱、楼板与楼梯沿原线条位置生长，完成“线落成墙”。\n6–10s：灰模结构完全建立，门窗与尺度关系清晰；相机位置不跳变。\n10–13s：真实材质沿结构表面逐渐出现，木、石、混凝土、玻璃按空间逻辑生成，自然光进入。\n13–${$('duration').value.replace('秒','')}s：空间完成，植物/家具/人物尺度可轻微进入，镜头仅做缓慢推进或轻微抬升。严禁结构漂移、墙体融化、门窗变形、家具瞬移。\n\n建议：用阶段 03 成图作为图生视频首帧；如模型支持关键帧，再同时提供阶段 02 作为结构参考。`
+function generate(){const b=base(); const total=parseInt($('duration').value,10); const t=[0,.2,.4,.6,.8,1].map(v=>Math.round(total*v)); generated={
+ line:`${b}\n\n【阶段 01｜线】\n从一笔起始，提取手绘稿中最初的关键线条与空间轮廓。保留线条的方向、长度、轻重和想象感，让一条线先成为空间构想的起点。不要加入材质，不要补造未经要求的结构，不要改变原始意图。`,
+ lineart:`${b}\n\n【阶段 02｜线稿】\n严格继承阶段 01。让关键线条逐步叠加，建立前景、中景、后景、主要墙线、开口、楼梯和空间锚点的层次。保持手绘线稿感，明确结构关系但不进行最终设计，不加入真实材质，不改变机位与比例。`,
+ sketch:`${b}\n\n【阶段 03｜草图】\n严格继承阶段 02。让线稿形成完整草图，明确建筑体块、透视、比例、空间关系与主要构件。清理纸面噪声与无意义辅助线，但保留探索性的手绘笔触。不要加入最终材质，不要改变原设计。建筑设计手绘感，清晰而不过度精修。`,
+ wall:`${b}\n\n【阶段 04｜线落成墙】\n严格继承阶段 03。保持完全相同的机位、透视、空间比例、主要开口和构图。将已有关键线条转化为具有厚度和结构逻辑的墙、柱、梁、楼板、窗框、楼梯和固定构件。辅助线逐渐淡出，主体结构逐渐清晰。不要移动墙体，不要改变窗户，不要改变楼梯方向，不要重新布局。整体呈建筑灰模/白模状态，材质克制。核心视觉动作：线条获得厚度并“落成墙”。`,
+ space:`${b}\n\n【阶段 05｜空间生成】\n严格继承阶段 04 的全部几何。禁止移动墙、柱、门窗、楼梯及相机。仅增加真实材质、自然光、细节、家具、植物和生活尺度。材质与光影服从已有建筑结构，不能用装饰掩盖空间逻辑。让空间从结构灰模自然生成可居住、可体验的真实场景；真实尺度、自然光、克制高级、避免塑料质感与过度 HDR。`,
+ film:`${b}\n\n【阶段 06｜${$('duration').value} 视频分镜】\n${t[0]}–${t[1]}s：保留同一机位，一条线从纸面/画面中出现，勾勒空间最初轮廓。\n${t[1]}–${t[2]}s：线条逐步叠加成为线稿，前中后景、结构层次与空间锚点显现。\n${t[2]}–${t[3]}s：线稿形成草图，体块、透视、比例和空间关系清晰；相机位置不跳变。\n${t[3]}–${t[4]}s：关键线条加深并获得厚度，墙、柱、楼板与楼梯沿原线条位置生长，完成“线落成墙”。\n${t[4]}–${t[5]}s：真实材质沿结构表面逐渐出现，木、石、混凝土、玻璃按空间逻辑生成，自然光进入；植物/家具/人物尺度可轻微进入，镜头仅做缓慢推进或轻微抬升。严禁结构漂移、墙体融化、门窗变形、家具瞬移。\n\n建议：用阶段 05 成图作为图生视频首帧；如模型支持关键帧，再同时提供阶段 04 作为结构参考。`
 }; renderCurrent(); renderMetrics(); saveLocal();}
 function renderCurrent(){ const p=generated[current]||'等待生成。'; $('promptBox').textContent=p; $('promptTitle').textContent=(stages.find(s=>s.id===current)||{}).name+' · 提示词'; const img=sketchData||''; $('preview').innerHTML=img?`<img src="${img}" alt="手绘稿预览"/>`:`<div class="placeholder">上传手绘稿后将在这里预览。</div>`; }
 function renderMetrics(){const n=locks().length, base=Math.round(70+n*6); const vals=[['Camera',locks().includes('camera')?100:68],['Perspective',locks().includes('perspective')?100:70],['Geometry',locks().includes('geometry')?100:64],['Openings',locks().includes('openings')?100:72],['Preflight',Math.min(100,base)]]; $('metrics').innerHTML=vals.map(v=>`<div class="metric"><strong>${v[1]}%</strong><span>${v[0]}</span></div>`).join('')}
