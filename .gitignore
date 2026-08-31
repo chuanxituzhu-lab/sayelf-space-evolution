@@ -1,0 +1,50 @@
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*api_key*
+*apikey*
+*secret*
+*token*
+*credential*
+credentials*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+env/
+
+# Build products, dependencies, and test output
+node_modules/
+dist/
+build/
+.cache/
+coverage/
+*.egg-info/
+
+# Local application data and temporary files
+user_data/*
+tmp/
+temp/
+*.log
+*.tmp
+*.temp
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.7z
+*.tar.gz
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

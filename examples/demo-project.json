@@ -1,0 +1,10 @@
+{
+  "project": {
+    "name": "线落成墙 Demo",
+    "description": "极简住宅客厅，左侧大窗，右侧楼梯，低矮长凳，清水混凝土与暖木材。",
+    "ratio": "9:16",
+    "duration": "15秒",
+    "style": "建筑手绘 → 写实空间"
+  },
+  "continuity_locks": ["camera","perspective","geometry","openings","anchors"]
+}

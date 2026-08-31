@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"SpatialDNA",
+  "type":"object",
+  "required":["version","camera","perspective","geometry","openings","anchors"],
+  "properties":{
+    "version":{"type":"string"},
+    "camera":{"type":"object","properties":{"locked":{"type":"boolean"},"notes":{"type":"string"}}},
+    "perspective":{"type":"object","properties":{"locked":{"type":"boolean"},"notes":{"type":"string"}}},
+    "geometry":{"type":"object","properties":{"locked":{"type":"boolean"},"notes":{"type":"string"}}},
+    "openings":{"type":"object","properties":{"locked":{"type":"boolean"},"notes":{"type":"string"}}},
+    "anchors":{"type":"object","properties":{"locked":{"type":"boolean"},"notes":{"type":"string"}}}
+  }
+}

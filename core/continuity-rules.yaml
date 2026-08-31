@@ -1,0 +1,25 @@
+prime_rule: "Completion changes; space does not."
+locks:
+  camera: strict
+  perspective: strict
+  geometry: strict
+  openings: strict
+  anchors: strict
+allowed_changes:
+  - line_cleanup
+  - geometry_clarification_without_relayout
+  - structural_thickness
+  - materials
+  - lighting
+  - furniture_detail
+  - vegetation
+  - atmosphere
+  - restrained_camera_motion_in_film
+forbidden_changes:
+  - camera_jump
+  - room_relayout
+  - move_major_wall
+  - resize_or_move_opening
+  - flip_stair_direction
+  - change_floor_level
+  - replace_core_anchor
