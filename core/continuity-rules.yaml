@@ -30,3 +30,9 @@ presentation_principles:
     sequence: "5 or N images in one horizontal row"
     preserve_individual_ratio: true
     forbidden: ["merge_into_one_image", "crop", "stretch"]
+input_matching:
+  source: "customer_space_description"
+  mode: "local_keyword_match"
+  fields: ["project_name", "space_type", "space_style"]
+  manual_override: "preserve_customer_selection"
+  unclear_match: "keep_current_default"

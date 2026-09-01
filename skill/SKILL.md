@@ -51,6 +51,9 @@ The skill must preserve the same Spatial DNA across stages unless the user expli
 ## Mobile / Social Presentation Principle
 When the selected single-image ratio is `9:16` or `4:5`, output one independent image per stage. When presenting five or N stage images, keep them at a consistent height and arrange them in one horizontal row for mobile and social-media viewing. Never merge the assets into one image, crop them, or stretch their individual ratio.
 
+## Description-first Matching Principle
+When a customer description explicitly names a project, space type, or style, match it locally against the existing project field and select options before prompt generation. Preserve a customer-edited field as a manual override. If no clear keyword is present, keep the current default and do not invent a new category or call an external model.
+
 ## Local-first Principle
 Use deterministic local templates, state, caching, validation and dependency tracking before calling an LLM. Only use external models when semantic interpretation or media generation is actually required.
 

@@ -13,5 +13,11 @@
     "sequence_layout": "horizontal_row",
     "preserve_individual_frames": true
   },
+  "input_matching": {
+    "source": "space_description",
+    "mode": "local_keyword",
+    "fields": ["project_name", "space_type", "space_style"],
+    "manual_override": true
+  },
   "continuity_locks": ["camera","perspective","geometry","openings","anchors"]
 }

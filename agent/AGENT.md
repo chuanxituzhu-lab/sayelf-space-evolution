@@ -21,6 +21,7 @@ The agent is an execution layer. It must not invent a new spatial design when th
 16. If a media Provider exists, render only the required nodes.
 17. Write outcomes back to the Asset Graph.
 18. For `9:16` or `4:5`, keep each stage as one independent image and present five or N images in a consistent-height horizontal row; do not merge, crop or stretch.
+19. Before prompt generation, locally match explicit project name, space type and style phrases from the customer description to existing fields; preserve manual overrides and keep defaults when evidence is unclear.
 
 ## Stop Conditions
 Ask for user confirmation only when:
