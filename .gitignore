@@ -31,6 +31,7 @@ coverage/
 
 # Local application data and temporary files
 user_data/*
+exports/
 tmp/
 temp/
 *.log

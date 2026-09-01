@@ -23,7 +23,7 @@
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
   </style>
   <style>
-    .auto-match-note{min-height:18px;margin:8px 0 0;font-size:10px}.auto-match-note.active{color:var(--ok)}.auto-match-note.manual{color:var(--warn)}
+    .auto-match-note{min-height:18px;margin:8px 0 0;font-size:10px}.auto-match-note.active{color:var(--ok)}.auto-match-note.manual{color:var(--warn)}.save-path-note{margin:10px 0 0}.save-path-note.saved{color:var(--ok)}.save-path-note.fallback{color:var(--warn)}
   </style>
 </head>
 <body>
@@ -61,7 +61,7 @@
       <label class="lock-label"><input class="lockbox" type="checkbox" data-k="geometry" checked /> 锁定墙柱 / 楼板 / 楼梯</label>
       <label class="lock-label"><input class="lockbox" type="checkbox" data-k="openings" checked /> 锁定门窗 / 开口</label>
       <label class="lock-label"><input class="lockbox" type="checkbox" data-k="anchors" checked /> 锁定主要空间锚点</label>
-      <div class="actions actions--primary"><button id="generateBtn">生成完整工作流 <span aria-hidden="true">→</span></button><button class="secondary" id="saveBtn">保存项目</button></div>
+      <div class="actions actions--primary"><button id="generateBtn">生成完整工作流 <span aria-hidden="true">→</span></button><button class="secondary" id="saveBtn">保存项目</button></div><p class="note save-path-note" id="savePathNote">点击「保存项目」后，项目 JSON 会写入本地 exports/space-evolution-project.json，并显示实际保存路径。</p>
     </div>
   </aside>
 
@@ -169,10 +169,10 @@ function stylePrompt(){const name=$('style').value;return `${name}：${styleProf
 function typePrompt(){const name=$('spaceType').value;return `${name}：${typeProfiles[name]||'根据所选空间类型保持合理尺度、动线和功能关系'}`}
 function layoutPrinciple(){const ratio=$('ratio').value;return ['9:16','4:5'].includes(ratio)?`${ratio} 单张画幅：每个阶段独立输出一张图片；5 张或 N 张图片统一高度横向排列展示，不拼接成一张、不裁切、不拉伸，适合手机与自媒体传播。`:`${ratio} 单张画幅：每个阶段独立输出一张图片，保持统一画幅与构图连续性。`}
 function presentationData(){const ratio=$('ratio').value;return {single_frame_ratio:ratio,sequence_count:'5_or_n',sequence_layout:['9:16','4:5'].includes(ratio)?'horizontal_row':'independent_assets',preserve_individual_frames:true}}
-function base(){return `项目：${$('projectName').value.trim()}\n空间描述：${$('description').value.trim()||'依据上传手绘稿识别空间构想，不新增未经要求的空间结构。'}\n空间类型：${typePrompt()}\n画幅：${$('ratio').value}\n画幅与排版原则：${layoutPrinciple()}\n视觉方向：${stylePrompt()}\n材质与完成度：根据空间类型、建筑结构、空间风格和空间描述匹配，可呈现豪华、极简、自然或商业质感；除非用户明确指定，不固定为清水混凝土。\n\n【Spatial Continuity Lock】\n${lockText()}\n\n最高规则：变的是完成度，不变的是空间。所有后续阶段只能继承、澄清、加厚、材质化和增加生活感，不得重新设计空间。`}
+ function base(){return `项目：${$('projectName').value.trim()}\n空间描述：${$('description').value.trim()||'依据上传手绘稿识别空间构想，不新增未经要求的空间结构。'}\n空间类型：${typePrompt()}\n画幅：${$('ratio').value}\n画幅与排版原则：${layoutPrinciple()}\n视觉方向：${stylePrompt()}\n客户关联与视角冲击：把空间描述中与客户直接相关的使用场景、情绪、记忆或品牌需求转化为视觉焦点、前景引导、尺度参照和光线节奏；第一眼要有明确视角冲击力，但不得新增描述外的故事，不得改变机位、几何或客户原始意图。\n材质与完成度：根据空间类型、建筑结构、空间风格和空间描述匹配，可呈现豪华、极简、自然或商业质感；除非用户明确指定，不固定为清水混凝土。\n\n【Spatial Continuity Lock】\n${lockText()}\n\n最高规则：变的是完成度，不变的是空间。所有后续阶段只能继承、澄清、加厚、材质化和增加生活感，不得重新设计空间。`}
  function generate(){autoMatchFromDescription();const b=base(); const total=parseInt($('duration').value,10); const t=[0,.2,.4,.6,.8,1].map(v=>Math.round(total*v)); generated={
- line:`${b}\n\n【阶段 01｜线】\n从一笔起始，提取手绘稿中最初的关键线条与空间轮廓。保留线条的方向、长度、轻重和想象感，让一条线先成为空间构想的起点。不要加入材质，不要补造未经要求的结构，不要改变原始意图。`,
- lineart:`${b}\n\n【阶段 02｜线稿】\n严格继承阶段 01。让关键线条逐步叠加，建立前景、中景、后景、主要墙线、开口、楼梯和空间锚点的层次。保持手绘线稿感，明确结构关系但不进行最终设计，不加入真实材质，不改变机位与比例。`,
+  line:`${b}\n\n【阶段 01｜线】\n极简线条起稿：只保留 3—6 个最重要的大框架、主要体块轮廓、地平线和一条主轴，不画门窗细节、家具、材质、阴影或辅助线。镜头近距离观察纸面，一笔从纸面划过，清晰呈现笔尖接触纸张、移动、停顿、转向和线条落下的过程；保留大片留白、未完成感和手绘稿原始构图，让客户能在第一眼把自己的空间想象投射进来。`,
+  lineart:`${b}\n\n【阶段 02｜线稿】\n严格继承阶段 01 的大框架。在线条继续叠加时只建立主骨架：主要墙体、柱、梁、楼板、楼梯、开口、地平线与前中后景关系。用少量辅助线说明透视和空间层次，但不展开家具、装饰、材质和细部；保持同一机位、比例与客户视角，让骨架清晰、有方向感并产生视角冲击。`,
  sketch:`${b}\n\n【阶段 03｜草图】\n严格继承阶段 02。让线稿形成完整草图，明确建筑体块、透视、比例、空间关系与主要构件。清理纸面噪声与无意义辅助线，但保留探索性的手绘笔触。不要加入最终材质，不要改变原设计。建筑设计手绘感，清晰而不过度精修。`,
  wall:`${b}\n\n【阶段 04｜线落成墙】\n严格继承阶段 03。保持完全相同的机位、透视、空间比例、主要开口和构图。将已有关键线条转化为具有厚度和结构逻辑的墙、柱、梁、楼板、窗框、楼梯和固定构件。辅助线逐渐淡出，主体结构逐渐清晰。不要移动墙体，不要改变窗户，不要改变楼梯方向，不要重新布局。整体呈建筑灰模/白模状态，材质克制。核心视觉动作：线条获得厚度并“落成墙”。`,
  space:`${b}\n\n【阶段 05｜空间生成】\n严格继承阶段 04 的全部几何。禁止移动墙、柱、门窗、楼梯及相机。仅增加与空间类型、建筑结构和视觉方向匹配的真实材质、自然光、细节、家具、植物和生活尺度。材质可以是豪华、极简、自然、商业或其他用户明确指定的方向，不预设为清水混凝土；材质与光影服从已有建筑结构，不能用装饰掩盖空间逻辑。让空间从结构灰模自然生成可居住、可体验的真实场景，避免塑料质感与过度 HDR。`,
@@ -183,11 +183,12 @@ function renderPromptCards(){const grid=$('promptGrid'); if(!grid)return; const 
 function applyPreset(id, notify=true){const preset=presets[id];if(!preset)return;matchState.manual={name:false,type:false,style:false};matchState.last={name:'',type:'',style:''};$('projectName').value=preset.name;$('description').value=preset.description;$('ratio').value=preset.ratio;$('duration').value=preset.duration;$('spaceType').value=preset.type;$('style').value=preset.style;$('presetHint').textContent=`已套用「${preset.title}」· 类型：${preset.type} · 风格：${preset.style}，你可以继续改写空间描述。`;renderAutoMatchNote();if(notify){saveLocal();showToast(`已套用「${preset.title}」。`)}}
 function renderMetrics(){const n=locks().length, base=Math.round(70+n*6); const vals=[['Camera',locks().includes('camera')?100:68],['Perspective',locks().includes('perspective')?100:70],['Geometry',locks().includes('geometry')?100:64],['Openings',locks().includes('openings')?100:72],['Preflight',Math.min(100,base)]]; $('metrics').innerHTML=vals.map(v=>`<div class="metric"><div class="metric-top"><strong>${v[1]}%</strong><span>${v[0]}</span></div><div class="metric-track" aria-hidden="true"><i style="--metric:${v[1]}%"></i></div></div>`).join('')}
  function projectData(){return {app:'sayelf-space-evolution',version:'1.0.0',saved_at:new Date().toISOString(),project:{name:$('projectName').value,description:$('description').value,ratio:$('ratio').value,duration:$('duration').value,spaceType:$('spaceType').value,style:$('style').value},input_matching:{source:'space_description',mode:'local_keyword',fields:['project_name','space_type','space_style'],manual_override:true},presentation:presentationData(),continuity_locks:locks(),prompts:generated}}
-function dl(name,content,type='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-function saveLocal(){localStorage.setItem('sayelf-space-evolution-v1',JSON.stringify(projectData()));}
+ function dl(name,content,type='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+ function saveLocal(){localStorage.setItem('sayelf-space-evolution-v1',JSON.stringify(projectData()));}
+ async function saveProject(){autoMatchFromDescription();saveLocal();const data=JSON.stringify(projectData(),null,2);try{const response=await fetch('/api/save-project',{method:'POST',headers:{'Content-Type':'application/json'},body:data});if(!response.ok)throw new Error('save_failed');const result=await response.json();$('savePathNote').textContent=`已保存路径：${result.path||'exports/space-evolution-project.json'}`;$('savePathNote').className='note save-path-note saved';showToast('项目已保存到本地文件。')}catch(e){dl('space-evolution-project.json',data,'application/json');$('savePathNote').textContent='本地服务保存不可用，已下载：space-evolution-project.json';$('savePathNote').className='note save-path-note fallback';showToast('已改为下载项目文件。')}}
 let toastTimer; function showToast(message){const toast=$('toast');toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
 function copyPrompt(id){const stage=stages.find(s=>s.id===id);const text=generated[id]||'';if(!text){showToast('请先生成完整工作流。');return}navigator.clipboard.writeText(text).then(()=>{current=id;renderStages();renderCurrent();renderPromptCards();showToast(`${stage.name} Prompt 已复制。`)}).catch(()=>showToast('复制失败，请手动选择 Prompt。'))}
-$('generateBtn').onclick=generate; $('saveBtn').onclick=()=>{saveLocal();showToast('项目配置已保存在当前浏览器本地。')}; $('copyBtn').onclick=()=>copyPrompt(current);
+ $('generateBtn').onclick=generate; $('saveBtn').onclick=saveProject; $('copyBtn').onclick=()=>copyPrompt(current);
 $('applyPresetBtn').onclick=()=>applyPreset($('scenePreset').value);
 $('exportJsonBtn').onclick=()=>dl('space-evolution-project.json',JSON.stringify(projectData(),null,2),'application/json');
 $('exportMdBtn').onclick=()=>{let md=`# ${$('projectName').value}\n\n> 变的是完成度，不变的是空间。\n\n`;stages.forEach(s=>md+=`## ${s.name}\n\n${generated[s.id]||''}\n\n`);dl('space-evolution-workflow.md',md,'text/markdown')};

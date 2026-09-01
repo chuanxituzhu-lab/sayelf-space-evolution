@@ -22,6 +22,9 @@ The agent is an execution layer. It must not invent a new spatial design when th
 17. Write outcomes back to the Asset Graph.
 18. For `9:16` or `4:5`, keep each stage as one independent image and present five or N images in a consistent-height horizontal row; do not merge, crop or stretch.
 19. Before prompt generation, locally match explicit project name, space type and style phrases from the customer description to existing fields; preserve manual overrides and keep defaults when evidence is unclear.
+20. Keep Stage 01 to the major framework and show the stroke crossing paper; keep Stage 02 to the main skeleton; preserve the current Stage 03 sketch style.
+21. Translate customer-described needs into a focused viewpoint and first-look impact without changing locked geometry.
+22. On save, write the project JSON to the local exports path and report the returned path; never send project data to an external service.
 
 ## Stop Conditions
 Ask for user confirmation only when:

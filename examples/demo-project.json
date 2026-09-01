@@ -19,5 +19,14 @@
     "fields": ["project_name", "space_type", "space_style"],
     "manual_override": true
   },
+  "stage_focus": {
+    "line": "minimal_large_framework_only_with_stroke_process",
+    "linework": "main_structural_skeleton",
+    "sketch": "preserve_current_style"
+  },
+  "client_association": {
+    "translate_to": ["visual_focus", "foreground_lead", "scale_reference", "light_rhythm"],
+    "viewpoint": "clear_first_look_impact_without_geometry_change"
+  },
   "continuity_locks": ["camera","perspective","geometry","openings","anchors"]
 }

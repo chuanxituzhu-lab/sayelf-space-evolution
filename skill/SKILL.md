@@ -19,12 +19,13 @@ The skill must preserve the same Spatial DNA across stages unless the user expli
 
 ## Stage 01 — Line
 - Start from the first meaningful line and preserve its direction, weight and spatial intent.
-- Establish the initial outline of the imagined space without adding unrequested structure.
+- Keep only the major framework, massing outline, horizon and one primary axis; exclude small details, furniture, materials, shadows and guide lines.
+- Show the stroke physically moving across the paper, including contact, movement, pause, turn and line landing, with generous blank space.
 
 ## Stage 02 — Linework
 - Inherit Stage 01 exactly.
-- Layer lines to clarify foreground, middle ground, background, openings, stairs and spatial anchors.
-- Keep an architectural line-drawing character; do not add final materials.
+- Layer lines only to clarify the main skeleton: major walls, columns, beams, slabs, stairs, openings, horizon and foreground/middle-ground/background relationships.
+- Keep an architectural line-drawing character; use few auxiliary lines and do not add decorative detail or final materials.
 
 ## Stage 03 — Sketch
 - Inherit Stage 02 exactly.
@@ -51,11 +52,14 @@ The skill must preserve the same Spatial DNA across stages unless the user expli
 ## Mobile / Social Presentation Principle
 When the selected single-image ratio is `9:16` or `4:5`, output one independent image per stage. When presenting five or N stage images, keep them at a consistent height and arrange them in one horizontal row for mobile and social-media viewing. Never merge the assets into one image, crop them, or stretch their individual ratio.
 
+## Client Association and Viewpoint Impact
+Translate only the customer-described use scene, emotion, memory or brand need into the visual focus, foreground lead, scale reference and light rhythm. Create a clear first-look viewpoint impact without changing the locked camera, geometry or original customer intent.
+
 ## Description-first Matching Principle
 When a customer description explicitly names a project, space type, or style, match it locally against the existing project field and select options before prompt generation. Preserve a customer-edited field as a manual override. If no clear keyword is present, keep the current default and do not invent a new category or call an external model.
 
 ## Local-first Principle
-Use deterministic local templates, state, caching, validation and dependency tracking before calling an LLM. Only use external models when semantic interpretation or media generation is actually required.
+Use deterministic local templates, state, caching, validation and dependency tracking before calling an LLM. Only use external models when semantic interpretation or media generation is actually required. Save the project JSON locally to the application `exports/space-evolution-project.json` path when the local save action is available.
 
 ## Asset Contract
 Every generated asset should retain:

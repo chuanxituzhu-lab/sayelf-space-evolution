@@ -36,3 +36,20 @@ input_matching:
   fields: ["project_name", "space_type", "space_style"]
   manual_override: "preserve_customer_selection"
   unclear_match: "keep_current_default"
+stage_focus:
+  line:
+    treatment: "minimal_large_framework_only"
+    process: "show_stroke_moving_across_paper"
+    exclude: ["small_details", "furniture", "materials", "shadows", "guide_lines"]
+  linework:
+    treatment: "main_structural_skeleton"
+    inherit: "line_large_framework"
+    exclude: ["decorative_detail", "final_materials"]
+  sketch:
+    treatment: "preserve_current_style"
+client_association:
+  source: "customer_space_description"
+  translate_to: ["visual_focus", "foreground_lead", "scale_reference", "light_rhythm"]
+  viewpoint: "clear_first_look_impact_without_geometry_change"
+storage:
+  project_save: "local_exports/space-evolution-project.json"
