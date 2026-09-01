@@ -11,11 +11,13 @@ A build is accepted when:
 8. Space type and style can be combined in generated prompts without changing the six-stage workflow.
 9. Changing style changes the visual direction text without changing the six-stage workflow.
 10. Material and completion level are matched to scene, architecture, type and style; concrete is not forced unless specified.
-11. Six independent prompts are generated locally: line, linework, sketch, wall, space generation and film.
-12. Each independent prompt has its own copy action, including the film prompt.
-13. Five continuity locks are enabled by default.
-14. Project JSON can be exported.
-15. Workflow Markdown can be exported.
-16. No external API is called during local prompt generation or copying.
-17. README clearly states the boundary between the local workflow and third-party media generation.
-18. README includes the five public workflow demonstration images.
+11. Selecting 9:16 or 4:5 records one independent image per stage and a horizontal-row presentation for five or N images.
+12. The ratio principle forbids merging, cropping or stretching individual stage images.
+13. Six independent prompts are generated locally: line, linework, sketch, wall, space generation and film.
+14. Each independent prompt has its own copy action, including the film prompt.
+15. Five continuity locks are enabled by default.
+16. Project JSON can be exported.
+17. Workflow Markdown can be exported.
+18. No external API is called during local prompt generation or copying.
+19. README clearly states the boundary between the local workflow and third-party media generation.
+20. README includes the five public workflow demonstration images.

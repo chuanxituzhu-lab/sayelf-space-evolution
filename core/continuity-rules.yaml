@@ -23,3 +23,10 @@ forbidden_changes:
   - flip_stair_direction
   - change_floor_level
   - replace_core_anchor
+presentation_principles:
+  mobile_social:
+    when_ratio: ["9:16", "4:5"]
+    single_frame: "one independent image per stage"
+    sequence: "5 or N images in one horizontal row"
+    preserve_individual_ratio: true
+    forbidden: ["merge_into_one_image", "crop", "stretch"]

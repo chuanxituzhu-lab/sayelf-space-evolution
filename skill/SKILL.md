@@ -48,6 +48,9 @@ The skill must preserve the same Spatial DNA across stages unless the user expli
 - Preferred motion: slow push-in, restrained tilt-up, subtle parallax.
 - Forbidden: wall melting, opening drift, furniture teleportation, camera jump.
 
+## Mobile / Social Presentation Principle
+When the selected single-image ratio is `9:16` or `4:5`, output one independent image per stage. When presenting five or N stage images, keep them at a consistent height and arrange them in one horizontal row for mobile and social-media viewing. Never merge the assets into one image, crop them, or stretch their individual ratio.
+
 ## Local-first Principle
 Use deterministic local templates, state, caching, validation and dependency tracking before calling an LLM. Only use external models when semantic interpretation or media generation is actually required.
 

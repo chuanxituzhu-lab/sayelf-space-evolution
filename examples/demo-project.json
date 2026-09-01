@@ -4,7 +4,14 @@
     "description": "极简住宅客厅，左侧大窗，右侧楼梯，低矮长凳，清水混凝土与暖木材。",
     "ratio": "9:16",
     "duration": "15秒",
+    "spaceType": "住宅客厅",
     "style": "建筑手绘 → 写实空间"
+  },
+  "presentation": {
+    "single_frame_ratio": "9:16",
+    "sequence_count": "5_or_n",
+    "sequence_layout": "horizontal_row",
+    "preserve_individual_frames": true
   },
   "continuity_locks": ["camera","perspective","geometry","openings","anchors"]
 }
