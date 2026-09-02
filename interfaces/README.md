@@ -11,4 +11,4 @@ Reserved integration directions:
 - CLI: expose the same deterministic local workflow for automation (future wrapper)
 - API: local service endpoints for future provider/agent integration
 
-The commercial v1.0 does not pretend to support a third-party platform unless that adapter has actually been installed and configured.
+The public repository is the MIT Core. It does not pretend to support a third-party platform unless that adapter has actually been installed and configured. Commercial Pro adapters and customer delivery modules remain outside this public repository.

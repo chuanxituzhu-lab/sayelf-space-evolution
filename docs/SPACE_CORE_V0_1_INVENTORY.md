@@ -17,6 +17,7 @@
 | `examples/demo-project.json` | 演示项目字段、展示、匹配、stage focus、锁 | 转为 fixture 来源 | 增加 `examples/space-core-poc.json`，保留原示例 |
 | `tests/ACCEPTANCE.md` | 27 条 v1.0 UI/工作流验收项 | 保留 | 新增 Core 验收条目与 `unittest`；UI 验收仍按原文执行 |
 | `docs/assets/workflow/*` | 五张公开演示图 | 保留 | 不复制进 Core，继续由原 README 引用 |
+| `COMMERCIAL_LICENSE.txt`、`docs/SALES_DELIVERY_README.md`、`seller-kit/` | 旧商业交付与销售资料 | 从公开分支移除 | 保留在 git 历史/私有 Pro 交付材料中，不作为 MIT Core 内容 |
 
 ## Extracted Core objects
 

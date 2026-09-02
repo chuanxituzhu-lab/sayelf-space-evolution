@@ -48,15 +48,15 @@
 
 ## Data classification and local trust boundary
 
-代码、客户空间描述、草稿、图纸、项目 JSON、Prompt、日志和测试 fixture 均按 `Internal` 或 `Sensitive`（若含真实客户内容）处理，只留在本机工作区。凭据、API key、个人信息和客户原图不得进入 fixture、日志、远程仓库或公开发布物。
+本次准备公开的 Core 代码、Schema、文档、测试和脱敏 fixture 已分类为 `Public`；本地工作树、真实客户空间描述、草稿、图纸、项目 JSON、Prompt、日志均仍按 `Internal` 或 `Sensitive` 留在本机。凭据、API key、个人信息和客户原图不得进入 fixture、日志、远程仓库或公开发布物。
 
-## GitHub/public release decision: Blocked — review evidence
+## GitHub/public release decision: Allowed — review evidence
 
-本轮不 push、不创建 PR、不发布包。现有仓库虽配置了 GitHub remote，但新增实现尚未完成 staged diff 与发布物泄漏审查；因此公开转移阻断。若未来发布，只能在逐文件分类为 `Public` 并完成 staged diff、构建产物、日志和 metadata 检查后再决定。
+用户已明确授权按 MIT Core / 私有 Pro 原则推送。当前功能分支的 staged diff 将只包含公开 Core、脱敏示例和边界文档；商业买方许可、销售资料和私有 Pro 内容已从当前分支移除。已完成测试、PoC、原 v1.0 health、凭据模式与临时路径审查；主分支不会被直接改写，先推送功能分支并通过 PR 审核。
 
 ## External transfer plan (if any; local and sensitive data excluded)
 
-N/A。本切片不需要外部传输；仅使用公开项目文档作为设计参照，客户与本地项目数据不上传。
+目标为已知的公开 GitHub remote `https://github.com/chuanxituzhu-lab/sayelf-space-evolution.git`。用户授权此次公开推送；只传输分类为 `Public` 的 Core 代码、文档、脱敏 fixture 和测试。GitHub 的公开可见、fork 和历史留存视为长期公开保留；不传输本地客户数据、商业 Pro、凭据或未知内容。
 
 ## State, change signals, and next-check rule
 
@@ -79,7 +79,7 @@ Core 不把 `Inference`/`Hypothesis` 自动提升为 `Fact`；没有工程证据
 
 ## Evolution, validation, canary, version, and rollback plan
 
-Schema 与合同版本固定为 `0.1.0`。先以两个本地 PoC fixture 做回归，再逐步加入更多已脱敏案例作为 canary；通过后才提升 schema/contract 版本。所有变更保留 git 历史，可回退到 `3787ccb` 基线；本轮不修改原有 WebUI 运行路径。
+Schema 与合同版本固定为 `0.1.0`。先以两个本地 PoC fixture 做回归，再逐步加入更多已脱敏案例作为 canary；通过后才提升 schema/contract 版本。当前提交 `487af3d` 保留在功能分支，可回退到 `3787ccb` 基线；公开推送后通过 PR 合并，正式产品 tag 另行决定。本轮不修改原有 WebUI 运行路径。
 
 ## WebUI decision: Not required — reason
 

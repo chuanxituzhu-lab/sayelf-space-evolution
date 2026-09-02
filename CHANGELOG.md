@@ -4,6 +4,7 @@
 - 从现有 Space Skill 抽取平台无关的 Canonical Space Model、双入口、Spatial Engineering Lock 与零插件 Native Provider。
 - 新增 `core/schemas/canonical-space.schema.json`、Core Python API、Provider 合同、脱敏展厅 PoC fixture 与 8 项标准库回归测试。
 - 保持原有 v1.0 WebUI、六阶段 Prompt 工作流和五锁命名兼容；本轮不接入第三方 Provider、不修改 UI。
+- 公开仓库定位为 MIT Core；商业 Pro、专业适配器、客户资产和交付材料移出公开分支，另行私有化。
 
 ## 1.0.0
 - 优化客户关联与视角冲击：01 只保留大框架并呈现笔划过纸，02 建立主骨架，03 保持原有草图风格
