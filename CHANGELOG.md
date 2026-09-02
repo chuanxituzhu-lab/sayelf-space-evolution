@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — Space Core v0.1
+- 从现有 Space Skill 抽取平台无关的 Canonical Space Model、双入口、Spatial Engineering Lock 与零插件 Native Provider。
+- 新增 `core/schemas/canonical-space.schema.json`、Core Python API、Provider 合同、脱敏展厅 PoC fixture 与 8 项标准库回归测试。
+- 保持原有 v1.0 WebUI、六阶段 Prompt 工作流和五锁命名兼容；本轮不接入第三方 Provider、不修改 UI。
+
 ## 1.0.0
 - 优化客户关联与视角冲击：01 只保留大框架并呈现笔划过纸，02 建立主骨架，03 保持原有草图风格
 - 新增「保存项目」本地落盘：默认写入应用目录 `exports/space-evolution-project.json`，并在 WebUI 显示实际路径，服务不可用时回退下载

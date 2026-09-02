@@ -105,6 +105,19 @@ chmod +x start_mac_linux.sh
 
 **它不内置第三方图像/视频模型，也不会偷偷调用任何付费 API。** 如果要一键生成图片/视频，需要用户自行接入有权限的生成 Provider；相关扩展位已经保留在 `plugins/`。
 
+## Space Core v0.1 开发切片
+
+在不改变 v1.0 WebUI 用户路径的前提下，`core/space_core/` 提供平台无关的 Canonical Space Model、明确双入口、五锁状态、零插件 Native Provider 与六阶段 Prompt 资产编排。它只使用 Python 标准库；专业软件与媒体 Provider 仍是可插拔增强。
+
+在仓库根目录运行以下命令可验证最小工程闭环：
+
+```bash
+python -m unittest discover -s tests -v
+python examples/run_space_core_poc.py
+```
+
+设计决策与保留/抽取/迁移清单见 `docs/SPACE_CORE_V0_1_BUILD_DECISION.md` 和 `docs/SPACE_CORE_V0_1_INVENTORY.md`。
+
 ## 核心差异
 普通工作流通常是：`Sketch → Render`。
 

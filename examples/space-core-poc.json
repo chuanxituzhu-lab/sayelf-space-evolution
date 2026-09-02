@@ -1,0 +1,23 @@
+{
+  "project": {
+    "project_id": "poc-exhibition-hall-001",
+    "name": "脱敏展厅连续空间 PoC",
+    "description": "城市艺术展厅，入口正对开敞展墙，左侧高窗，右侧短楼梯；先验证空间关系与开口位置的连续锁，不生成真实客户信息。",
+    "ratio": "16:9",
+    "duration": "15秒",
+    "space_type": "展厅",
+    "style": "现代极简"
+  },
+  "drawing_input": {
+    "source_ref": "local-fixture/展厅-平面图.pdf",
+    "drawing_kind": "plan",
+    "observations": [
+      {"id": "evidence:poc:wall-01", "kind": "observation", "source_ref": "local-fixture/展厅-平面图.pdf", "content": "入口正对主展墙；左侧有高窗，右侧有短楼梯。", "confidence": 0.95},
+      {"id": "evidence:poc:dimension-01", "kind": "hypothesis", "source_ref": "local-fixture/展厅-平面图.pdf", "content": "未提供可核验尺寸，保持相对比例，不提升为工程事实。", "confidence": 0.40}
+    ]
+  },
+  "sketch_input": {
+    "source_ref": "local-fixture/展厅-概念草稿.png",
+    "sketch_kind": "rough_sketch"
+  }
+}

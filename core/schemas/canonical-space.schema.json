@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sayelf.local/schema/canonical-space-0.1.0.json",
+  "title": "Canonical Space Model v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "space_core", "project", "intake", "space", "locks", "assets"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "space_core": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "state", "created_at", "updated_at"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1},
+        "state": {"enum": ["DRAFT", "LOCKED", "STALE", "READY", "BLOCKED"]},
+        "created_at": {"type": "string", "minLength": 1},
+        "updated_at": {"type": "string", "minLength": 1}
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_id", "name", "description", "ratio", "duration", "space_type", "style"],
+      "properties": {
+        "project_id": {"type": "string", "minLength": 1},
+        "name": {"type": "string"},
+        "description": {"type": "string"},
+        "ratio": {"type": "string", "minLength": 1},
+        "duration": {"type": "string", "minLength": 1},
+        "space_type": {"type": "string"},
+        "style": {"type": "string"}
+      }
+    },
+    "intake": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "source_kind", "source_refs", "auto_classification", "evidence"],
+      "properties": {
+        "mode": {"enum": ["drawing", "sketch"]},
+        "source_kind": {"enum": ["plan", "elevation", "section", "rough_sketch", "linework", "concept_sketch", "perspective_sketch"]},
+        "source_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "auto_classification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label", "confidence", "advisory_only"],
+          "properties": {
+            "label": {"type": "string", "minLength": 1},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+            "advisory_only": {"const": true}
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "kind", "source_ref", "content"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "kind": {"enum": ["observation", "inference", "hypothesis", "fact"]},
+              "source_ref": {"type": "string", "minLength": 1},
+              "content": {"type": "string"},
+              "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+            }
+          }
+        }
+      }
+    },
+    "space": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["camera", "perspective", "geometry", "openings", "anchors", "design_intent"],
+      "properties": {
+        "camera": {"$ref": "#/$defs/locked_domain"},
+        "perspective": {"$ref": "#/$defs/locked_domain"},
+        "geometry": {"$ref": "#/$defs/locked_domain"},
+        "openings": {"$ref": "#/$defs/locked_domain"},
+        "anchors": {"$ref": "#/$defs/locked_domain"},
+        "design_intent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["description", "evidence_ids"],
+          "properties": {
+            "description": {"type": "string"},
+            "evidence_ids": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "locks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["camera", "perspective", "geometry", "openings", "anchors"],
+      "properties": {
+        "camera": {"$ref": "#/$defs/lock"},
+        "perspective": {"$ref": "#/$defs/lock"},
+        "geometry": {"$ref": "#/$defs/lock"},
+        "openings": {"$ref": "#/$defs/lock"},
+        "anchors": {"$ref": "#/$defs/lock"}
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["asset_id", "stage", "spatial_dna_version", "parent_asset_id", "prompt", "continuity_locks", "provider", "revision", "status", "lock_fingerprints"],
+        "properties": {
+          "asset_id": {"type": "string", "minLength": 1},
+          "stage": {"enum": ["line", "linework", "sketch", "wall", "space", "film"]},
+          "spatial_dna_version": {"const": "0.1.0"},
+          "parent_asset_id": {"type": ["string", "null"]},
+          "prompt": {"type": "string"},
+          "continuity_locks": {"type": "array", "items": {"enum": ["camera", "perspective", "geometry", "openings", "anchors"]}},
+          "provider": {"type": "string", "minLength": 1},
+          "revision": {"type": "integer", "minimum": 1},
+          "status": {"enum": ["planned", "ready", "stale", "blocked"]},
+          "lock_fingerprints": {"type": "object", "additionalProperties": {"type": "string"}}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "locked_domain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locked", "value", "evidence_ids"],
+      "properties": {
+        "locked": {"type": "boolean"},
+        "value": {},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "lock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "status", "fingerprint", "evidence_ids"],
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "status": {"enum": ["unlocked", "locked", "stale"]},
+        "fingerprint": {"type": ["string", "null"]},
+        "evidence_ids": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
